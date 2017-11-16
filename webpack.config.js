@@ -25,6 +25,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -86,7 +87,7 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.DefinePlugin({
             PRODUCTION: JSON.stringify(true),
-    
+
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname + '/src', 'index.html'),
@@ -104,7 +105,7 @@ module.exports = {
             new webpack.optimize.OccurrenceOrderPlugin(),
             new webpack.DefinePlugin({
                 PRODUCTION: JSON.stringify(false),
-        
+
             }),
             new HtmlWebpackPlugin({
                 template: path.join(__dirname + '/src', 'index.html'),
